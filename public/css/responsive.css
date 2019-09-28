@@ -1,0 +1,63 @@
+@media only screen and (min-width: 900px) {
+
+
+    main {
+        line-height: 1.1;
+        margin: 0 auto;
+    }
+
+    footer {
+        margin-top: auto;
+    }
+
+    main,
+    .nav,
+    .footer {
+        padding: .5rem 10%;
+
+    }
+
+    .topnav li {
+        margin-left: .5rem
+    }
+
+    .icon {
+        display: none;
+    }
+
+    .title {
+        width: auto;
+        justify-content: left;
+        margin-right: 0;
+    }
+
+    .title img {
+        order: -1;
+        margin-right: 1em;
+    }
+
+    .primary,
+    .secondary,
+    .hello {
+        font-size: 3.5rem;
+        margin-bottom: .5rem;
+        margin-top: 0;
+    }
+
+    .login li {
+        font-size: 2rem;
+    }
+
+    .secondary h2 {
+        font-weight: normal;
+        font-size: 3rem;
+    }
+
+    .footer {
+        font-size: 1rem;
+    }
+
+    .myLinks-desktop {
+        display: inline-block;
+    }
+}

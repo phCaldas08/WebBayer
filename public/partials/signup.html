@@ -1,0 +1,28 @@
+<main>
+    <div class="text">
+        <div class="primary">
+            <h1 class="hello">Olá,</h1>
+            <h1>Seja bem vindo ao novo processo seletivo da Bayer :)</h1>
+        </div>
+        <div class="secondary">
+            <h2>Pra se cadastrar só precisamos de alguns dados seus, é rapidinho!</h2>
+        </div>
+    </div>
+    <div class="login-form">
+        <form id="signup-input">
+            <input type="text" name="name" id="" placeholder="Nome" required ng-model="usuario.nome"> 
+            <input type="text" name="sobrenome" id="" placeholder="Sobrenome" required ng-model="usuario.sobrenome"> 
+            <input type="email" name="email" id="" placeholder="Email" required ng-model="usuario.email">
+            <input type="text" name="telefone" id="" placeholder="Telefone (EX: 11 0000-0000)" ng-model="usuario.tel" required>
+            <input type="text" name="documento" id="" placeholder="CPF ou registro Bayer" ng-model="usuario.CPF" required>
+            <input type="password" name="password" id="" placeholder="Senha" required ng-model="usuario.senha">
+            <input type="password" name="passwordConfirmation" id="" placeholder="Confirmação Senha" ng-model="confirmacaoSenha" required>
+        </form>
+    </div>
+    <div class="links">
+        <ul>
+            <li><a href="#/login">Já tem conta?</a></li>            
+            <button type="button" name="submit" ng-click="cadastrar()">Enviar</button>
+        </ul>
+    </div>
+</main>
