@@ -2,8 +2,11 @@ angular.module('bayer-web').controller('LoginController', function($scope, $http
 
     $scope.usuario = {
         login: null,
-        senha: null
+        senha: null,
+        data_nascimento: new Date(1990, 00, 01)
     };
+    
+    $scope.esqueciMinhaSenha = false;
 
     $scope.logar = function(){
         if($scope.usuario.login && $scope.usuario.senha){
@@ -28,5 +31,29 @@ angular.module('bayer-web').controller('LoginController', function($scope, $http
             }); 
         }
     }
+
+    $scope.recuperarSenha = function(){
+        if($scope.usuario.login && $scope.usuario.data_nascimento){
+
+            $http({
+                method: 'POST',
+                url: API + 'login/esqueci_minha_senha',                
+                data: { usuario: JSON.stringify($scope.usuario) },
+                headers: {
+                    'Content-Type': 'application/json'
+                  }
+            }).then(function success(data){
+                console.log(data);
+                alert("Sua senha é: " + data.data)
+            }, function error(data){
+                if(data.status == 404)
+                    alert("Nenhuma senha encontrada para este usuário e data de nascimento");
+                else
+                    alert("Erro ao realizar recuperação de senha");
+                console.log(data);
+            }); 
+        }
+    }
+    
     
 });

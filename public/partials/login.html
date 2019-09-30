@@ -12,13 +12,14 @@
         <div class="login-form">
             <form id="login-input">
                 <input type="email" name="email" id="" placeholder="Email" ng-model="usuario.login" required value="{{ usuario.login }}">
-                <input type="password" name="password" id="" placeholder="Senha" ng-model="usuario.senha" required value="{{ usuario.senha }}">
+                <input type="password" ng-show="!esqueciMinhaSenha" name="password" id="" placeholder="Senha" ng-model="usuario.senha" required value="{{ usuario.senha }}">
+                <input type="date" ng-show="esqueciMinhaSenha" name="datanascimento" id="" placeholder="01/01/1990" ng-model="usuario.data_nascimento" required value="{{ usuario.data_nascimento }}">
             </form>
         </div>
         <div class="links">
             <ul>
-                <button type="submit" name="button" ng-click="logar()">Enviar</button>
-                <li><a href="#pwRecovery">Esqueceu sua senha?</a></li>
+                <button type="submit" name="button" ng-click="!esqueciMinhaSenha ? logar() : recuperarSenha()">Enviar</button>
+                <li><a href="" ng-click="esqueciMinhaSenha = !esqueciMinhaSenha">Esqueceu sua senha?</a></li>
                 <li><a href="#/signup">Ainda não tem conta?</a></li>
             </ul>
         </div>

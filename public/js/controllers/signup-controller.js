@@ -8,6 +8,7 @@ angular.module('bayer-web').controller('SignupController', function($scope, $htt
         CPF: null,
         nome: null,
         sobrenome: null,
+        dataNascimento: new Date(1990, 00, 01),
 
     };
 
@@ -37,7 +38,7 @@ angular.module('bayer-web').controller('SignupController', function($scope, $htt
                 usuario = $scope.usuario;
                 $location.path("/login");
             }, function error(data){
-                
+
                 if(data.status == 400)
                     alert(data.message);
                 else
