@@ -21,6 +21,11 @@ main {
 h1,
 h2 {
     font-weight: normal;
+    margin-bottom: .8rem
+}
+
+h2 {
+    font-size: 110%;
 }
 
 .hello {
@@ -29,14 +34,6 @@ h2 {
 
 .primary {
     font-size: 2rem;
-}
-
-.secondary {
-    font-size: 1.15rem;
-}
-
-.secondary h2 {
-    font-weight: bold;
 }
 
 .myLinks-desktop {
@@ -48,7 +45,7 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     background-color: #C8E6F5;
     padding: .5rem .5em;
     box-shadow: 0px 9px 7px -3px rgba(0, 0, 0, 0.27);
@@ -97,7 +94,6 @@ h2 {
 
 .footer {
     width: 100%;
-    justify-content: flex-start;
     font-size: .6rem;
     box-shadow: -5px -7px 7px -3px rgba(0, 0, 0, 0.27);
 }

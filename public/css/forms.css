@@ -1,0 +1,48 @@
+input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #707070;
+    display: block;
+    width: 100%;
+    height: 2rem;
+    font-size: 1.3rem;
+}
+
+button,
+select,
+textarea {
+    background-color: #FFFFFF;
+    border: none;
+    padding: .5rem 1rem;
+    box-shadow: -2px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    font-size: 1.1rem;
+}
+
+select,
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+textarea {
+    height: 15ch;
+}
+
+.links {
+    display: flex;
+    width: 100%;
+}
+
+.links ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.links li,
+.links button,
+select,
+input,
+textarea {
+    margin: .8rem 0;
+}

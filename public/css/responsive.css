@@ -11,9 +11,13 @@
     }
 
     main,
-    .nav,
+    .footer,
+    .topnav {
+        padding: .5rem 11.8%;
+    }
+
     .footer {
-        padding: .5rem 10%;
+        justify-content: flex-start;
 
     }
 
@@ -21,8 +25,16 @@
         margin-left: .5rem
     }
 
+    .topnav {
+        justify-content: space-between;
+    }
+
     .icon {
         display: none;
+    }
+
+    h2 {
+        font-size: 70%;
     }
 
     .title {
@@ -45,12 +57,7 @@
     }
 
     .login li {
-        font-size: 2rem;
-    }
-
-    .secondary h2 {
-        font-weight: normal;
-        font-size: 3rem;
+        font-size: 1.4rem;
     }
 
     .footer {
@@ -60,4 +67,32 @@
     .myLinks-desktop {
         display: inline-block;
     }
+
+    input {
+        height: 2.4rem;
+        font-size: 2.3rem;
+        width: 60%;
+    }
+
+    .links {
+        display: flex;
+        width: 60%;
+    }
+
+    .links ul {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between
+    }
+
+    .links li {
+        margin: 1.5rem 1em 0 0;
+    }
+
+    .links button {
+        order: 1
+    }
+
 }

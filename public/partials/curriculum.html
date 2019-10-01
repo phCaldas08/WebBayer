@@ -1,0 +1,104 @@
+<main>
+    <div ng-show="index == 0"> <!--Informações pessoais-->
+        <div class="text">
+            <div class="primary">
+                <h1>Hora de cadastrar seu currículo!</h1>
+            </div>
+            <div class="secondary">
+                <h2>Conte um pouco mais sobre você, Matheus.</h2>
+            </div>
+        </div>
+        <form id="personal-data" >
+            <input type="text" name="cpf" placeholder="CPF" value="42913774873" pattern="[0-9]{11}" required>
+            <input type="text" name="sobrenome" placeholder="Sobrenome" value="Gomes" required>
+            <select name="genero" required>
+                <option value="" disabled selected>Gênero</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Outros">Outros</option>
+            </select>
+            <select name="cor" required>
+                <option value="" disabled selected>Cor/Etnia</option>
+                <option value="Branca">Branca</option>
+                <option value="Preta">Preta</option>
+                <option value="Parda">Parda</option>
+                <option value="Amarela">Amarela</option>
+            </select>
+            <input type="text" name="dt_nascimento" placeholder="Data de Nascimento DD/MM/AAAA" required
+                value="03/03/1997">
+            <input type="text" name="rg" placeholder="RG" required value="356895282" pattern="[0-9]{9}">
+            <input type="text" name="emissor" placeholder="Estado Emissor" required maxlength="2" value="SP">
+            <div class="links">
+                <ul>
+                    <button type="button" name="submit" ng-click="index = 1" >Avançar</button>
+                    <li>Etapa 1/5 - Dados Pessoais</li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <div ng-show="index == 1"> <!--Endereço-->
+        <div class="text">
+            <div class="primary">
+                <h1>Hora de cadastrar seu currículo!</h1>
+            </div>
+            <div class="secondary">
+                <h2>Precisamos saber onde você mora :)</h2>
+            </div>
+        </div>
+        <form id="personal-data">
+            <input type="text" name="CEP" placeholder="CEP" value="05018011" pattern="[0-9]{8}" required>
+            <input type="text" name="rua" placeholder="Rua" value="RUA AIMBERE " required>
+            <input type="text" name="numero" placeholder="Numero" required value="944">
+            <input type="text" name="complemento" placeholder="Complemento" required value="ap 203">
+            <input type="text" name="cidade" placeholder="Cidade" required value="São Paulo">
+            <input type="text" name="estado" placeholder="Estado" required value="SP" pattern="[A-Z]{2}">
+            <div class="links">
+                <ul>
+                    <button name="back" ng-click="index = 0">Voltar</button>
+                    <button type="button" name="submit" id="enviar" ng-click="index = 2">Avançar</button>
+                    <li>Etapa 2/5 - Endereço</li>
+                </ul>
+            </div>
+        </form>
+    </div>
+
+    <div ng-show="index == 2"> <!--Ensino-->
+        <div class="text">
+            <div class="primary">
+                <h1>Hora de cadastrar seu currículo!</h1>
+            </div>
+            <div class="secondary">
+                <h2>Agora suas informações de ensino :)</h2>
+            </div>
+        </div>
+        <form id="personal-data">
+            <select name="nivel" required>
+                <option value="" disabled selected>Nivel de ensino</option>
+                <option value="Masculino">Médio</option>
+                <option value="Feminino">Superior</option>
+                <option value="Outros">Mestrado</option>
+                <option value="Outros">Doutorado</option>
+            </select>
+            <input type="text" name="nome-instituicao" placeholder="Nome da Instituição" value="FIAP" required>
+            <input type="text" name="nome-curso" placeholder="Nome do Curso" value="Sistemas de Informação" required>
+            <input type="text" name="ano-conclusão" placeholder="Ano de Conclusão (AAAA)" required value="2019"
+                pattern="[0-9]{4}">
+            <input type="text" name="periodo" placeholder="Período" required value="Noturno">
+            <select name="status-curso" required>
+                <option value="" disabled selected>Situação</option>
+                <option value="Masculino">Cursando</option>
+                <option value="Feminino">Completo</option>
+                <option value="Outros">Trancado</option>
+            </select>
+            <textarea name="observações" placeholder="Observações Adicionais"></textarea>
+            <div class="links">
+                <ul>
+                    <button name="back" ng-click="index = 1">Voltar</button>
+                    <button type="button" name="submit" id="voltar" ng-click="">Avançar</button>
+                    <li>Etapa 3/5 - Educação</li>
+                </ul>
+            </div>
+        </form>
+    </div>
+
+</main>

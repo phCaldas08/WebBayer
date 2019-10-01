@@ -16,7 +16,11 @@ angular.module('bayer-web', ['ngRoute'])
         templateUrl: 'partials/signup.html',
         controller: "SignupController"
     });
-       
+    
+    $routeProvider.when('/curriculum', {
+        templateUrl: 'partials/curriculum.html',
+        controller: 'CurriculumController'
+    })
        
 
     $routeProvider.otherwise({
