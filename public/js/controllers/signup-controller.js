@@ -8,7 +8,7 @@ angular.module('bayer-web').controller('SignupController', function($scope, $htt
         CPF: null,
         nome: null,
         sobrenome: null,
-        dataNascimento: new Date(1990, 00, 01),
+        dataNascimento: '01/01/1990',
 
     };
 
@@ -35,7 +35,7 @@ angular.module('bayer-web').controller('SignupController', function($scope, $htt
                   }
             }).then(function success(data){
                 alert("Cadastro realizado com sucesso!");
-                usuario = $scope.usuario;
+                //usuario = $scope.usuario;
                 $location.path("/login");
             }, function error(data){
 

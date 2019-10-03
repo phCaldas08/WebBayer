@@ -8,6 +8,10 @@
         align-items: center;
     }
 
+    .links ul {
+        align-items: baseline;
+    }
+
     #personal-data input,
     #personal-data select,
     .links {
@@ -19,8 +23,14 @@
         justify-content: space-between;
     }
 
-    .links:last-child:nth-child(odd) {
-        /* background-color: red; */
+    textarea {
         width: calc(80% + 2.4rem);
     }
+
+    .links:last-child:nth-child(odd),
+    textarea + .links {
+        width: calc(80% + 2.4rem);
+    }
+
+    
 }
