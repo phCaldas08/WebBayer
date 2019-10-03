@@ -1,4 +1,4 @@
-angular.module('bayer-web').controller('LoginController', function($scope, $http){
+angular.module('bayer-web').controller('LoginController', function($scope, $http, $location){
 
     $scope.usuario = {
         login: null,
