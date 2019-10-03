@@ -9,6 +9,10 @@ angular.module('bayer-web').controller('SignupController', function($scope, $htt
         nome: null,
         sobrenome: null,
         dataNascimento: '01/01/1990',
+        cor: "",
+        genero: "",
+        estadoEmissor: null,
+
 
     };
 

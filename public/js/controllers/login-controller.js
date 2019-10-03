@@ -24,7 +24,7 @@ angular.module('bayer-web').controller('LoginController', function($scope, $http
                 usuario = $scope.usuario;
                 $location.path("/curriculum");
             }, function error(data){
-                if(data.status == 401)
+                if(data.status == 401)  
                     alert("Usuário ou senha invalidos!")
                 else
                     alert("Erro ao realizar login");

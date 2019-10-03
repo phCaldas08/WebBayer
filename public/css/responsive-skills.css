@@ -1,0 +1,30 @@
+@media only screen and (min-width: 900px) {
+
+    .form-tip {
+        margin-left: 1em;
+    }
+
+    #personal-data {
+        flex-direction: column;
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        align-items: center;
+    }
+
+    .input {
+        display: flex;
+
+    }
+
+    .input:nth-child(n) {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    form label {
+        font-size: 250%;
+    }

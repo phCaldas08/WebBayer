@@ -3,14 +3,17 @@ angular.module('bayer-web').controller('CurriculumController', function($scope, 
     $scope.usuarioLogado = usuario;
     $scope.index = 0;
 
-    $scope.curriculum = {
+    $scope.usuario = {
         CPF: null,
         sobrenome: null,
-        genero: '',
-        cor: '',
+        genero: null,
+        cor: null,
         dataNascimento: null,
         rg: null,
-        estadoEmissor: null,
+        estadoEmissor: null
+    }
+
+    $scope.curriculum = {
         endereco: {
             cep: null,
             rua: null,

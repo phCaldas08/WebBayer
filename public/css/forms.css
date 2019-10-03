@@ -1,3 +1,14 @@
+.form-tip {
+    font-size: 80%;
+}
+
+form label {
+    font-size: 160%;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+
 input {
     background-color: transparent;
     border: none;
@@ -43,6 +54,7 @@ textarea {
 .links button,
 select,
 input,
-textarea {
+textarea,
+.container {
     margin: .8rem 0;
 }
