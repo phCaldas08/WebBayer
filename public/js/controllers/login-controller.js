@@ -21,7 +21,7 @@ angular.module('bayer-web').controller('LoginController', function($scope, $http
             }).then(function success(data){
                 console.log(data);
                 //alert("Login realizado com sucesso!")
-                usuario = $scope.usuario;
+                usuario = data.data.usuario;
                 $location.path("/curriculum");
             }, function error(data){
                 if(data.status == 401)  

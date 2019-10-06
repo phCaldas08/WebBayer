@@ -4,9 +4,9 @@
         margin-left: 1em;
     }
 
-    #personal-data {
+    /* #personal-data {
         flex-direction: column;
-    }
+    } */
 
     .container {
         display: flex;

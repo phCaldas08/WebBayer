@@ -1,0 +1,91 @@
+.vaga-container {
+    position: relative;
+}
+
+.vaga-header,
+.vaga-container {
+    border: 1px solid #fdfdfd;
+    background: #fdfdfd;
+    box-shadow: 0 0 10px #ccc;
+}
+
+.vaga-container,
+.vaga-header li,
+.vaga-req,
+.vaga-req li,
+.new {
+    margin: .5rem;
+}
+
+
+.vaga-header li:last-child {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.hidden {
+    margin: 0;
+    height: 0px;
+    overflow: hidden;
+}
+
+.vaga-header,
+.vaga-container,
+.botao button,
+button {
+    border-radius: 10px;
+}
+
+.botao,
+.botao button {
+    font-size: 90%;
+}
+
+button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+}
+
+.botao {
+    display: flex;
+    text-decoration: underline;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.vaga-req,
+.new {
+    position: relative;
+}
+
+.new {
+    height: auto;
+    margin-top: 4rem;
+}
+
+.new span {
+    font-weight: bold;
+}
+
+
+@media only screen and (min-width: 900px) {
+    .botao {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    .botao button {
+        margin-left: 0.5rem;
+    }
+
+    .botao button,
+    .botao {
+        font-size: 100%;
+    }
+}

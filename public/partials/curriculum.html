@@ -1,4 +1,4 @@
-<main>
+<main ng-init="consultarCurriculo()">
     <div ng-show="index == 0"> <!--Informações pessoais-->
         <div class="text">
             <div class="primary">
@@ -9,7 +9,7 @@
             </div>
         </div>
         <form id="personal-data" >
-            <input type="text" name="cpf" placeholder="CPF" ng-model="usuario.CPF" value="{{ usuario.CPF }}" pattern="[0-9]{11}" required>
+            <input type="text" name="cpf" placeholder="CPF" ng-model="usuario.CPF" value="{{ usuario.CPF }}" required>
             <input type="text" name="sobrenome" placeholder="Sobrenome" ng-model="usuario.sobrenome" value="{{ usuario.sobrenome }}" required>
             <select name="genero" required ng-model="usuario.genero">
                 <option value="" disabled selected>Gênero</option>
@@ -26,11 +26,12 @@
             </select>
             <input type="text" name="dt_nascimento" placeholder="Data de Nascimento DD/MM/AAAA" required
                 value="{{ usuario.dataNascimento }}" ng-model="usuario.dataNascimento">
-            <input type="text" name="rg" placeholder="RG" required value="{{ usuario.rg }}" ng-model="usuario.rg" pattern="[0-9]{9}">
+            <input type="text" name="rg" placeholder="RG" required value="{{ usuario.rg }}" ng-model="usuario.rg">
             <input type="text" name="emissor" ng-model="usuario.estadoEmissor" placeholder="Estado Emissor" required maxlength="2" value="{{ usuario.estadoEmissor }} ">
+            <input type="text" name="telefone" ng-model="usuario.telefone" placeholder="Telefone (Ex: (11) 11111-1111)" required value="{{ usuario.telefone }} ">
             <div class="links">
                 <ul>
-                    <button type="button" name="submit" ng-click="index = 1" >Avançar</button>
+                    <button type="button" name="submit" ng-click="index = 1" onclick="window.scrollTo(0, 0)" >Avançar</button>
                     <li>Etapa 1/5 - Dados Pessoais</li>
                 </ul>
             </div>
@@ -46,7 +47,7 @@
             </div>
         </div>
         <form id="personal-data">
-            <input type="text" name="CEP" placeholder="CEP" value="{{ curriculum.endereco.cep }}" ng-model="curriculum.endereco.cep" pattern="[0-9]{8}" required>
+            <input type="text" name="CEP" placeholder="CEP" value="{{ curriculum.endereco.cep }}" ng-model="curriculum.endereco.cep" required>
             <input type="text" name="rua" placeholder="Rua" value="{{ curriculum.endereco.rua }}" ng-model="curriculum.endereco.rua" required>
             <input type="text" name="numero" placeholder="Numero" required value="{{ curriculum.endereco.numero }}" ng-model="curriculum.endereco.numero">
             <input type="text" name="complemento" placeholder="Complemento" required value="{{ curriculum.endereco.complemento }}" ng-model="curriculum.endereco.complemento">
@@ -54,8 +55,8 @@
             <input type="text" name="estado" placeholder="Estado" required value="{{ curriculum.endereco.estado }}" ng-model="curriculum.endereco.estado" pattern="[A-Z]{2}">
             <div class="links">
                 <ul>
-                    <button name="back" ng-click="index = 0">Voltar</button>
-                    <button type="button" name="submit" id="enviar" ng-click="index = 2">Avançar</button>
+                    <button type="button" ng-click="index = 0" onclick="window.scrollTo(0, 0)">Voltar</button>
+                    <button type="button" name="submit" id="enviar" ng-click="index = 2" onclick="window.scrollTo(0, 0)">Avançar</button>
                     <li>Etapa 2/5 - Endereço</li>
                 </ul>
             </div>
@@ -94,8 +95,8 @@
             <textarea name="observações" ng-model="curriculum.ensino.observacao" placeholder="Observações Adicionais">{{ curriculum.ensino.observacao }}</textarea>
             <div class="links">
                 <ul>
-                    <button name="back" ng-click="index = 1">Voltar</button>
-                    <button type="button" name="submit" id="voltar" ng-click="index = 3">Avançar</button>
+                    <button type="button" ng-click="index = 1" onclick="window.scrollTo(0, 0)">Voltar</button>
+                    <button type="button" name="submit" id="voltar" ng-click="index = 3" onclick="window.scrollTo(0, 0)">Avançar</button>
                     <li>Etapa 3/5 - Educação</li>
                 </ul>
             </div>
@@ -136,8 +137,8 @@
             <div class="links">
                 <ul>
                     <li><a href=#>Adicionar Outra Formação</a></li>
-                    <button name="back" ng-click="index = 2">Voltar</button>
-                    <button type="button" name="button" ng-click="index = 4" id="enviar">Enviar</button>
+                    <button type="button" ng-click="index = 2" onclick="window.scrollTo(0, 0)">Voltar</button>
+                    <button type="button" name="button" ng-click="index = 4" id="enviar" onclick="window.scrollTo(0, 0)">Avançar</button>
                     <li>Etapa 4/5 - Experiência</li>
                 </ul>
             </div>
@@ -160,9 +161,9 @@
             <div class="idioma container">
                 <label>Idioma</label>
                 <div class="input">
-                    <input type="text" name="idioma1" placeholder="Idioma" value="Português" required>
-                    <select name="idioma-nivel" required>
-                        <option value="" disabled selected>Nivel</option>
+                    <input type="text" name="idioma1" placeholder="Idioma" ng-model="curriculum.skill.primeiroIdioma" value="{{ curriculum.skill.primeiroIdioma }}" required>
+                    <select name="idioma-nivel" ng-model="curriculum.skill.nivelPrimeiroIdioma"  required>
+                        <option value="0" disabled selected>Nivel</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -171,9 +172,9 @@
                     </select>
                 </div>
                 <div class="input">
-                    <input type="text" name="idioma2" placeholder="Idioma" value="Espanhol">
-                    <select name="idioma-nivel">
-                        <option value="" disabled selected>Nivel</option>
+                    <input type="text" name="idioma2" ng-model="curriculum.skill.segundoIdioma" placeholder="Idioma" value="{{curriculum.skill.segundoIdioma}}">
+                    <select name="idioma-nivel" ng-model="curriculum.skill.nivelSegundoIdioma">
+                        <option value="0" disabled selected>Nivel</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -182,9 +183,9 @@
                     </select>
                 </div>
                 <div class="input">
-                    <input type="text" name="idioma3" placeholder="Idioma" value="Inglês">
-                    <select name="idioma-nivel">
-                        <option value="" disabled selected>Nivel</option>
+                    <input type="text" name="idioma3" ng-model="curriculum.skill.terceiroIdioma" placeholder="Idioma" value="{{curriculum.skill.terceiroIdioma}}">
+                    <select name="idioma-nivel" ng-model="curriculum.skill.nivelTerceiroIdioma">
+                        <option value="0" disabled selected>Nivel</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -200,9 +201,9 @@
                         target="_blank">Oque
                         é isso?</a></span>
                 <div class="input">
-                    <input type="text" name="skill1" placeholder="Habilidade" value="HTML" required>
-                    <select name="skill-nivel" required>
-                        <option value="" disabled selected>Nivel</option>
+                    <input type="text" name="skill1" placeholder="Habilidade" ng-model="curriculum.skill.primeiraHabilidade" value="{{curriculum.skill.primeiraHabilidade}}" required>
+                    <select name="skill-nivel" ng-model="curriculum.skill.nivelPrimeiraHabilidade" required>
+                        <option value="0" disabled selected>Nivel</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -211,9 +212,9 @@
                     </select>
                 </div>
                 <div class="input">
-                    <input type="text" name="skill2" placeholder="Habilidade" value="CSS">
-                    <select name="idioma-nivel">
-                        <option value="" disabled selected>Nivel</option>
+                    <input type="text" name="skill2" ng-model="curriculum.skill.segundaHabilidade" placeholder="Habilidade" value="{{curriculum.skill.primeiraHabilidade}}">
+                    <select name="idioma-nivel"  ng-model="curriculum.skill.nivelSegundaHabilidade">
+                        <option value="0" disabled selected>Nivel</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -222,9 +223,9 @@
                     </select>
                 </div>
                 <div class="input">
-                    <input type="text" name="skill3" placeholder="Habilidade" value="SQL">
-                    <select name="idioma-nivel">
-                        <option value="" disabled selected>Nivel</option>
+                    <input type="text" name="skill3" ng-model="curriculum.skill.terceiraHabilidade" placeholder="Habilidade" value="{{curriculum.skill.terceiraHabilidade}}">
+                    <select name="idioma-nivel" ng-model="curriculum.skill.nivelTerceiraHabilidade">
+                        <option value="0" disabled selected>Nivel</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -234,8 +235,8 @@
             </div>
             <div class="links">
                 <ul>
-                    <button name="back" ng-click="index = 3">Voltar</button>
-                    <button type="submit" name="submit" form="personal-data" id="enviar">Enviar</button>
+                    <button type="button" name="voltar" ng-click="index = 3" onclick="window.scrollTo(0, 0)">Voltar</button>
+                    <button type="button" name="submit" ng-click="enviarCurriculo()" id="enviar">Enviar</button>
                     <li>Etapa 5/5 - Habilidades</li>
                 </ul>
             </div>
