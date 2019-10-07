@@ -1,5 +1,12 @@
 angular.module('bayer-web').controller('SignupController', function($scope, $http, $location){
 
+    $scope.iniciando = function(){
+        cssFiles = [];
+        cssFiles = [
+            "responsive-forms.css",
+        ];
+    }
+
     $scope.usuario = {
         email: null,
         login: null,
@@ -44,7 +51,7 @@ angular.module('bayer-web').controller('SignupController', function($scope, $htt
             }, function error(data){
 
                 if(data.status == 400)
-                    alert(data.message);
+                    alert(data.data.message);
                 else
                     alert("Não foi possível realizar seu cadastro, tente novamente!");
 

@@ -1,5 +1,21 @@
 angular.module('bayer-web').controller('CurriculumController', function($scope, $http, $location){
 
+    $scope.iniciando = function(){       
+        if(usuario == null){            
+            $location.path("/login");
+            return;
+        }
+        
+        cssFiles = [];
+        cssFiles = [
+            "responsive-forms.css",
+            'responsive-curriculum.css',
+            'responsive-skills.css'
+        ];
+
+        $scope.consultarCurriculo();
+    }
+
     usuario;
     $scope.index = 0;
     $scope.usuarioLogado = usuario;
@@ -51,10 +67,7 @@ angular.module('bayer-web').controller('CurriculumController', function($scope, 
     }
 
     $scope.consultarCurriculo = function(){
-        if(usuario == null){            
-            $location.path("/login");
-            return;
-        }
+      
 
         let data = {
             id_usuario: usuario.id_usuario,
@@ -105,7 +118,7 @@ angular.module('bayer-web').controller('CurriculumController', function($scope, 
             }).then(function success(data){
                 alert("Curriculo cadastrado com sucesso!");
                 //usuario = $scope.usuario;
-                $location.path("/dashboard");
+                $location.path("/dashboardCandidato");
             }, function error(data){
 
                 if(data.status == 400)

@@ -20,6 +20,21 @@ angular.module('bayer-web', ['ngRoute'])
     $routeProvider.when('/curriculum', {
         templateUrl: 'partials/curriculum.html',
         controller: 'CurriculumController'
+    });
+    
+    $routeProvider.when('/dashboardCandidato', {
+        templateUrl: 'partials/dashboard-candidato.html',
+        controller: 'DashboardCandidatoController'
+    });
+
+    $routeProvider.when('/cadatroDeVaga',{
+        templateUrl: 'partials/cadastro-vaga.html',
+        controller: 'CadastroVagaController'
+    });
+
+    $routeProvider.when('/dashboardRecrutador',{
+        templateUrl: 'partials/dashboard-recrutador.html',
+        controller: 'DashboardRecrutadorController'
     })
        
 
@@ -31,6 +46,8 @@ angular.module('bayer-web', ['ngRoute'])
 
 let API = 'http://localhost:54297/api/bayer/';
 var usuario = null;
+var recrutador = null;
+var cssFiles = [];
 
 
 function myFunction() {
@@ -42,5 +59,18 @@ function myFunction() {
     }
 }
 
+function carregarSetas(){
+    arrow = document.querySelectorAll('.down-arrow')
 
+    arrow.forEach(function (arrow) {
+
+        arrow.onclick = function () {
+            ul = arrow.parentNode
+            if (ul.nextElementSibling.classList.contains('hidden')) {
+                ul.nextElementSibling.classList.remove('hidden');
+            } else ul.nextElementSibling.classList.add('hidden')
+        }
+
+    });
+}
 

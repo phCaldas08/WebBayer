@@ -1,4 +1,14 @@
 angular.module('bayer-web').controller('LoginController', function($scope, $http, $location){
+    
+    $scope.iniciando = function(){
+        usuario = null;
+        recrutador = null;
+        
+        cssFiles = [];
+        cssFiles = [
+            "responsive-forms.css",
+        ];
+    }
 
     $scope.usuario = {
         login: null,
@@ -21,8 +31,14 @@ angular.module('bayer-web').controller('LoginController', function($scope, $http
             }).then(function success(data){
                 console.log(data);
                 //alert("Login realizado com sucesso!")
-                usuario = data.data.usuario;
-                $location.path("/curriculum");
+                if(data.data.tipo == 'candidato'){
+                    usuario = data.data.usuario;
+                    $location.path("/dashboardCandidato");
+                }
+                else{                    
+                    recrutador = data.data.usuario;
+                    $location.path("/cadatroDeVaga");
+                }
             }, function error(data){
                 if(data.status == 401)  
                     alert("Usuário ou senha invalidos!")

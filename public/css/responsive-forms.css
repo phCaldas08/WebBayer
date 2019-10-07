@@ -9,4 +9,20 @@
         margin: 2rem 0;
     }
 
+    .botao {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    .botao button {
+        margin-left: 0.5rem;
+    }
+
+    .botao button,
+    .botao {
+        font-size: 100%;
+    }
+
 }

@@ -1,36 +1,44 @@
 <!DOCTYPE html>
-<html lang="pt-br" ng-app="bayer-web">
+<html lang="pt-br" ng-app="bayer-web" ng-controller="IndexController">
 
-<head>
+<head >
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bem vindo!</title>
-    <link rel="stylesheet" href="./css/normalize.css">
-    <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/forms.css">
-    <link rel="stylesheet" href="./css/responsive.css">
-    <link rel="stylesheet" href="./css/responsive-forms.css">
-    <link rel="stylesheet" href="./css/login.css">
-    <link rel="stylesheet" href="./css/responsive-signup.css">
-    <link rel="stylesheet" href="./css/responsive-login.css">  
-    <link rel="stylesheet" href="./css/responsive-curriculum.css"> 
-    <link rel="stylesheet" href="./css/responsive-skills.css">
-     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css"> -->
+
     <script src="js/lib/angular.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/controllers/home-controller.js"></script>
     <script src="js/controllers/login-controller.js"></script>
     <script src="js/controllers/signup-controller.js"></script>
     <script src="js/controllers/curriculum-controller.js"></script>
+    <script src="js/controllers/index-controller.js"></script>
+    <script src="js/controllers/dashboardCandidato-controller.js"></script>
+    <script src="js/controllers/cadastroVaga-controller.js  "></script>
+    <script src="js/controllers/dashboardRecrutador-controller.js  "></script>
     <script src="js/lib/angular-route.min.js"></script>
-</head>
 
+    <title>Bem vindo!</title>
+
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/forms.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="stylesheet" ng-repeat="cssFile in cssFiles()" href="{{'./css/' + cssFile}}">
+
+
+    <!-- 
+    <link rel="stylesheet" href="./css/responsive-forms.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/responsive-signup.css">
+    <link rel="stylesheet" href="./css/responsive-login.css">  
+    <link rel="stylesheet" href="./css/responsive-curriculum.css"> 
+    <link rel="stylesheet" href="./css/responsive-skills.css"> -->
+     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+</head>
 <body>
     <header>
         <div class="nav topnav">
@@ -44,18 +52,20 @@
             </div>
             <div class="myLinks-desktop">
                 <ul>
-                    <li><a href="#/">Inicio</a></li>
-                    <li><a href="#/login">Login</a></li>
-                    <li><a href="#/signup">Cadastre-se</a></li>
+                    <li><a href="{{ alguemLogado() ? tipoDashboard() : '#/' }}">Inicio</a></li>
+                    <li><a ng-show="!alguemLogado()" href="#/signup">Cadastre-se</a></li>
+                    <li><a ng-show="alguemLogado()" href="#/curriculum">Currículo</a></li>
+                    <li><a href="#/login">{{ alguemLogado() ? 'Sair' : 'Login' }}</a></li>
                 </ul>
             </div>
         </div>
         <div class="myLinks active">
             <ul>
-                <li><a href="#/">Inicio</a></li>
-                <li><a href="#/login">Login</a></li>
-                <li><a href="#/signup">Cadastre-se</a></li>
-            </ul>
+                <li><a href="{{ alguemLogado() ? tipoDashboard() : '#/' }}">Inicio</a></li>
+                <li ng-if="!alguemLogado()"><a href="#/signup">Cadastre-se</a></li>
+                <li ng-if="alguemLogado()"><a href="#/curriculum">Currículo</a></li>
+                <li><a href="#/login">{{ alguemLogado() ? 'Sair' : 'Login' }}</a></li>
+            </ul> 
         </div>
     </header>
     <ng-view></ng-view>

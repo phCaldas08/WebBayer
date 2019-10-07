@@ -42,16 +42,8 @@ button {
     font-size: 90%;
 }
 
-button {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-
-}
-
 .botao {
     display: flex;
-    text-decoration: underline;
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;

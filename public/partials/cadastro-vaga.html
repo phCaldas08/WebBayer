@@ -1,0 +1,198 @@
+<main ng-init="iniciando()">
+    <div ng-show="index == 0"> <!--Informções básicas-->
+        <div class="text">
+            <div class="primary">
+                <h1>Vamos cadastrar uma nova vaga!</h1>
+            </div>
+            <div class="secondary">
+                <h2>Primeiro precisamos de algumas informações básicas.</h2>
+            </div>
+        </div>
+        <form id="personal-data">
+            <input type="text" name="vaga-titulo" placeholder="Título da vaga" value="{{vaga.descricao}}" ng-model="vaga.descricao" required>
+            <select name="vaga-nivel" ng-model="vaga.nivel" required>
+                <option value="" disabled selected>Nível da Vaga</option>
+                <option value="Junior">Junior</option>
+                <option value="Senior">Sênior</option>
+                <option value="Pleno">Pleno</option>
+                <option value="Estagio">Estágio</option>
+                <option value="Trainee">Trainee</option>
+            </select>
+            <input type="text" name="dt_termino" placeholder="Data de Término DD/MM/AAAA" required value="{{ vaga.dataTermino }}" ng-model="vaga.dataTermino">
+            <input type="text" name="max-participantes" placeholder="Maximo de Participantes" value="{{ vaga.limiteCandidatos }}" ng-model="vaga.limiteCandidatos">
+            <div class="links">
+                <ul>
+                    <button type="button" name="submit" form="personal-data" ng-click="index = 1">Avançar</button>
+                    <li>Etapa 1/4 - Informações básicas.</li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <div ng-show="index == 1">
+        <div class="text">
+            <div class="primary">
+                <h1>Vamos cadastrar uma nova vaga!</h1>
+            </div>
+            <div class="secondary">
+                <h2>Qual o nível de escolaridade que você busca?</h2>
+            </div>
+        </div>
+        <form id="personal-data" >
+            <select name="nivel" ng-model="vaga.escolaridade.nivel" required>
+                <option value="" disabled selected>Nivel de ensino</option>
+                <option value="Médio">Médio</option>
+                <option value="Superior">Superior</option>
+                <option value="Mestrado">Mestrado</option>
+                <option value="Doutorado">Doutorado</option>
+            </select>
+            <select name="status-curso" ng-model="vaga.escolaridade.status" required>
+                <option value="" disabled selected>Situação</option>
+                <option value="Cursando">Cursando</option>
+                <option value="Completo">Completo</option>
+                <option value="Cursando/Completo">Cursando/Completo</option>
+                <option value="Qualquer">Qualquer</option>
+            </select>
+            <select name="area-atuacao" ng-model="vaga.escolaridade.areaAtuacao" required>
+                <option value="" disabled selected>Área de Atuação</option>
+                <option value="Administração, Economia e Negócios">Administração, Economia e Negócios</option>
+                <option value="Ciências Sociais">Ciências Sociais</option>
+                <option value="Comunicação e Mídia">Comunicação e Mídia</option>
+                <option value="Design e Arte ">Design e Arte </option>
+                <option value="Direito">Direito</option>
+                <option value="Educação">Educação</option>
+                <option value="Engenharia e Arquitetura">Engenharia e Arquitetura</option>
+                <option value="Informação e Tecnologia">Informação e Tecnologia</option>
+                <option value="Saúde">Saúde</option>
+                <option value="Gastronomia Hotelaria e Turismo">Gastronomia Hotelaria e Turismo</option>
+            </select>
+            <input type="text" name="preffered_course" placeholder="Preferência de Curso?"
+                value="{{vaga.escolaridade.nomeCurso}}" ng-model="vaga.escolaridade.nomeCurso">
+            <input type="text" name="dt_termino" placeholder="Formação até AAAA" value="{{ vaga.escolaridade.anoFormacao }}" ng-model="vaga.escolaridade.anoFormacao">
+            <div class="links">
+                <ul>
+                    <button type="button" name="submit" ng-click="index = 0" >Voltar</button>
+                    <button type="button" name="submit" ng-click="index = 2">Avançar</button>
+                    <li>Etapa 2/4 - Educação</li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <div ng-show="index == 2">
+        <div class="text">
+            <div class="primary">
+                <h1>Vamos cadastrar uma nova vaga!</h1>
+            </div>
+            <div class="secondary">
+                <h2>Agora informações sobre experiência.</h2>
+            </div>
+        </div>
+        <form id="personal-data">
+            <input type="text" name="anos experiência" placeholder="Anos de experiência" value="{{ vaga.experiencia.duracao }}" ng-model="vaga.experiencia.duracao" required>
+            <input type="text" name="area-atuação" placeholder="Área de Atuação" value="{{ vaga.experiencia.areaAtuacao }}" ng-model="vaga.experiencia.areaAtuacao" required>
+            <input type="text" name="cidade-estado" placeholder="Ultimo Cargo" value="{{ vaga.experiencia.ultimoCargo }}" ng-model="vaga.experiencia.ultimoCargo" required>
+            <textarea name="observações" placeholder="Observações Adicionais" ng-model="vaga.experiencia.observacao" >{{ vaga.experiencia.observacao }}</textarea>
+            <div class="links">
+                <ul>
+                    <button name="back" type="button"  ng-click="index = 1">Voltar</button>
+                    <button type="button" name="submit" id="enviar" ng-click="index = 3">Avançar</button>
+                    <li>Etapa 3/4 - Experiência</li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <div ng-show="index == 3"> 
+        <div class="text">
+            <div class="primary">
+                <h1>Vamos cadastrar uma nova vaga!</h1>
+            </div>
+            <div class="secondary">
+                <h2>Por ultimo, habilidades importantes para a vaga.</h2>
+            </div>
+        </div>
+        <form id="personal-data">
+            <div class="idioma container">
+                <label>Idioma</label>
+                <div class="input">
+                    <input type="text" name="idioma1" placeholder="Idioma" value="{{ vaga.skill.primeiroIdioma }}" ng-model="vaga.skill.primeiroIdioma" required>
+                    <select name="idioma-nivel" required ng-model="vaga.skill.nivelPrimeiroIdioma" >
+                        <option value="" disabled selected>Nivel</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="input">
+                    <input type="text" name="idioma2" placeholder="Idioma" value="{{ vaga.skill.segundoIdioma }}" ng-model="vaga.skill.segundoIdioma">
+                    <select name="idioma-nivel" ng-model="vaga.skill.nivelSegundoIdioma">
+                        <option value="" disabled selected>Nivel</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="input">
+                    <input type="text" name="idioma3" placeholder="Idioma" value="{{ vaga.skill.terceiroIdioma }}" ng-model="vaga.skill.terceiroIdioma">
+                    <select name="idioma-nivel" ng-model="vaga.skill.nivelTerceiroIdioma">
+                        <option value="" disabled selected>Nivel</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="skill container">
+                <label for="Idioma">Hard Skills</label>
+                <span class="form-tip"><a
+                        href="https://exame.abril.com.br/carreira/qual-e-a-diferenca-entre-hard-skills-e-soft-skills/"
+                        target="_blank">Oque
+                        é isso?</a></span>
+                <div class="input">
+                    <input type="text" name="skill1" placeholder="Habilidade" value="{{ vaga.skill.primeiraSkill }}" ng-model="vaga.skill.primeiraSkill" required>
+                    <select name="skill-nivel" ng-model="vaga.skill.nivelPrimeiraSkill" required>
+                        <option value="" disabled selected>Nivel</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="input">
+                    <input type="text" name="skill2" placeholder="Habilidade" value="{{ vaga.skill.segundaSkill }}" ng-model="vaga.skill.segundaSkill">
+                    <select name="idioma-nivel" ng-model="vaga.skill.nivelSegundaSkill">
+                        <option value="" disabled selected>Nivel</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="input">
+                    <input type="text" name="skill3" placeholder="Habilidade" value="{{ vaga.skill.terceiraSkill }}" ng-model="vaga.skill.terceiraSkill">
+                    <select name="idioma-nivel" ng-model="vaga.skill.nivelTerceiraSkill">
+                        <option value="" disabled selected>Nivel</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select></div>
+            </div>
+            <div class="links">
+                <ul>
+                    <button name="back" type="button" ng-click="index = 2">Voltar</button>
+                    <button type="button" name="submit" id="enviar">Enviar</button>
+                    <li>Etapa 4/4 - Habilidades</li>
+                </ul>
+            </div>
+        </form>
+
+    </div>
+</main>

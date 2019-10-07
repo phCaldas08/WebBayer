@@ -1,4 +1,4 @@
-<main ng-init="consultarCurriculo()">
+<main ng-init="iniciando()">
     <div ng-show="index == 0"> <!--Informações pessoais-->
         <div class="text">
             <div class="primary">
@@ -24,11 +24,11 @@
                 <option value="Parda">Parda</option>
                 <option value="Amarela">Amarela</option>
             </select>
+            <input type="text" name="Celular" placeholder="Celular (XX)XXXXX-XXXX" required value="{{ usuario.telefone }}" ng-model="usuario.telefone">
             <input type="text" name="dt_nascimento" placeholder="Data de Nascimento DD/MM/AAAA" required
                 value="{{ usuario.dataNascimento }}" ng-model="usuario.dataNascimento">
             <input type="text" name="rg" placeholder="RG" required value="{{ usuario.rg }}" ng-model="usuario.rg">
             <input type="text" name="emissor" ng-model="usuario.estadoEmissor" placeholder="Estado Emissor" required maxlength="2" value="{{ usuario.estadoEmissor }} ">
-            <input type="text" name="telefone" ng-model="usuario.telefone" placeholder="Telefone (Ex: (11) 11111-1111)" required value="{{ usuario.telefone }} ">
             <div class="links">
                 <ul>
                     <button type="button" name="submit" ng-click="index = 1" onclick="window.scrollTo(0, 0)" >Avançar</button>
