@@ -11,66 +11,70 @@
     <section class="vagas inscritas">
         <h3>Processos Seletivos em andamento:</h3>
 
-        <div class="vaga-container">
+        <div class="vaga-container" ng-repeat="vaga in vagas_abertas" ng-init="carregarSetas()">
             <ul class="vaga-header">
-                <li><strong>Sr. Software Engineer</strong></li>
+                <li><strong>{{ vaga.descricao }}</strong></li>
                 <li><strong>Situação: </strong>Em andamento</span></li>
-                <li><strong>Nro de Inscritos: </strong>15</li>
+                <li><strong>Nro de Inscritos: </strong>{{ vaga.n_inscritos }}</li>
                 <li class="down-arrow"><img src="../img/24px.svg" alt="down-arrow"></li>
             </ul>
             <div class="vaga-req hidden">
 
                 <ul>
                     <h4>Requisitos:</h4>
-                    <li>Ensino Superior em Tecnologia</li>
-                    <li>8 Anos de Experiência na Área de Desenvolvimento</li>
-                    <li>Conhecimento em metodologias ágeis</li>
+                    <li>{{ vaga.escolaridade.areaAtuacao + ' - Curso : ' + vaga.escolaridade.nomeCurso }}</li>
+                    <li>{{ 'Nível: ' + vaga.escolaridade.nivel + ' - Situação : ' + vaga.escolaridade.status }}</li>
+                    <li>{{ vaga.experiencia.duracao + ' Anos de Experiência na Área de ' + vaga.experiencia.ultimoCargo}}</li>
                 </ul>
                 <ul>
                     <h4>Idiomas</h4>
-                    <li>Inglês</li>
+                    <li>{{ vaga.skill.primeiroIdioma }}</li>
+                    <li>{{ vaga.skill.segundoIdioma }}</li>
+                    <li>{{ vaga.skill.terceiroIdioma }}</li>
                 </ul>
                 <ul>
                     <h4>Hard Skills</h4>
-                    <li>Python3</li>
-                    <li>Django</li>
-                    <li>React</li>
+                    <li>{{ vaga.skill.primeiraSkill }}</li>
+                    <li>{{ vaga.skill.segundaSkill }}</li>
+                    <li>{{ vaga.skill.terceiraSkill }}</li>
                 </ul>
-                <button type="submit">Editar</button>
-            </div>
-        </div>
-        <div class="vaga-container">
-            <ul class="vaga-header">
-                <li><strong>Sr. Software Engineer</strong></li>
-                <li><strong>Situação: </strong><span class="enrollment-status">Em andamento</span></li>
-                <li><strong>Nro de Inscritos: </strong>177</li>
-                <li class="down-arrow"><img src="../img/24px.svg" alt="down-arrow"></li>
-            </ul>
-            <div class="vaga-req hidden">
-
-                <ul>
-                    <h4>Requisitos:</h4>
-                    <li>Ensino Superior em Tecnologia</li>
-                    <li>8 Anos de Experiência na Área de Desenvolvimento</li>
-                    <li>Conhecimento em metodologias ágeis</li>
-                </ul>
-                <ul>
-                    <h4>Idiomas</h4>
-                    <li>Inglês</li>
-                </ul>
-                <ul>
-                    <h4>Hard Skills</h4>
-                    <li>Python3</li>
-                    <li>Django</li>
-                    <li>React</li>
-                </ul>
-                <button type="submit">Editar</button>
+                <button type="button" ng-click="setIdProcessoSeletivo(vaga.id_processo_seletivo); trocarTela('cadastroDeVaga')">Editar</button>
             </div>
         </div>
     </section>
     <section class="vagas abertas">
         <h4>Processos Seletivos encerrados:</h4>
-        <div class="vaga-container">
+        <div class="vaga-container" ng-repeat="vaga in vagas_encerradas" ng-init="carregarSetas()">
+            <ul class="vaga-header">
+                <li><strong>{{ vaga.descricao }}</strong></li>
+                <li><strong>Situação: </strong>Encerrado</span></li>
+                <li><strong>Nro de Inscritos: </strong>{{ vaga.n_inscritos }}</li>
+                <li class="down-arrow"><img src="../img/24px.svg" alt="down-arrow"></li>
+            </ul>
+            <div class="vaga-req hidden">
+
+                <ul>
+                    <h4>Requisitos:</h4>
+                    <li>{{ vaga.escolaridade.areaAtuacao + ' - Curso : ' + vaga.escolaridade.nomeCurso }}</li>
+                    <li>{{ 'Nível: ' + vaga.escolaridade.nivel + ' - Situação : ' + vaga.escolaridade.status }}</li>
+                    <li>{{ vaga.experiencia.duracao + ' Anos de Experiência na Área de ' + vaga.experiencia.ultimoCargo}}</li>
+                </ul>
+                <ul>
+                    <h4>Idiomas</h4>
+                    <li>{{ vaga.skill.primeiroIdioma }}</li>
+                    <li>{{ vaga.skill.segundoIdioma }}</li>
+                    <li>{{ vaga.skill.terceiroIdioma }}</li>
+                </ul>
+                <ul>
+                    <h4>Hard Skills</h4>
+                    <li>{{ vaga.skill.primeiraSkill }}</li>
+                    <li>{{ vaga.skill.segundaSkill }}</li>
+                    <li>{{ vaga.skill.terceiraSkill }}</li>
+                </ul>
+                <button type="button" ng-click="setIdProcessoSeletivo(vaga.id_processo_seletivo); trocarTela('cadastroDeVaga')">Editar</button>
+            </div>
+        </div>
+        <!-- <div class="vaga-container">
             <ul class="vaga-header">
                 <li><strong>Sr. Software Engineer</strong></li>
                 <li><strong>Situação: </strong><span class="enrollment-status">Encerrado</span></li>
@@ -93,8 +97,9 @@
                     <li>React</li>
                 </ul>
                 <button type="submit">Ver Resultado</button>
-            </div>
+            </div> -->
     </section>
     <div class="container new">
-        <button type="submit">Novo Processo Seletivo</button></div>
+        <button type="button" ng-click="trocarTela('cadastroDeVaga')" >Novo Processo Seletivo</button>
+    </div>
 </main>

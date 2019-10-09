@@ -52,19 +52,21 @@
             </div>
             <div class="myLinks-desktop">
                 <ul>
-                    <li><a href="{{ alguemLogado() ? tipoDashboard() : '#/' }}">Inicio</a></li>
-                    <li><a ng-show="!alguemLogado()" href="#/signup">Cadastre-se</a></li>
-                    <li><a ng-show="alguemLogado()" href="#/curriculum">Currículo</a></li>
-                    <li><a href="#/login">{{ alguemLogado() ? 'Sair' : 'Login' }}</a></li>
+                    <li><a href="{{ tipoLogado() != 0 ? tipoDashboard() : '#/' }}">{{ tipoLogado() == 0 ? 'Inicio' : 'Minha Área' }}</a></li>
+                    <li ng-if="tipoLogado() == 0"><a href="#/signup">Cadastre-se</a></li>
+                    <li ng-if="tipoLogado() == 1"><a href="#/curriculum">Currículo</a></li>
+                    <li ng-if="tipoLogado() == 2"><a href="#/cadastroDeVaga">Novo Processo Seletivo</a></li>
+                    <li><a href="#/login">{{ tipoLogado() ? 'Sair' : 'Login' }}</a></li>
                 </ul>
             </div>
         </div>
         <div class="myLinks active">
             <ul>
-                <li><a href="{{ alguemLogado() ? tipoDashboard() : '#/' }}">Inicio</a></li>
-                <li ng-if="!alguemLogado()"><a href="#/signup">Cadastre-se</a></li>
-                <li ng-if="alguemLogado()"><a href="#/curriculum">Currículo</a></li>
-                <li><a href="#/login">{{ alguemLogado() ? 'Sair' : 'Login' }}</a></li>
+                <li><a href="{{ tipoLogado() != 0 ? tipoDashboard() : '#/' }}">{{ tipoLogado() == 0 ? 'Inicio' : 'Minha Área' }}</a></li>
+                <li ng-if="tipoLogado() == 0"><a href="#/signup">Cadastre-se</a></li>
+                <li ng-if="tipoLogado() == 1"><a href="#/curriculum">Currículo</a></li>
+                <li ng-if="tipoLogado() == 2"><a href="#/cadastroDeVaga">Novo Processo Seletivo</a></li>
+                <li><a href="#/login">{{ tipoLogado() ? 'Sair' : 'Login' }}</a></li>
             </ul> 
         </div>
     </header>

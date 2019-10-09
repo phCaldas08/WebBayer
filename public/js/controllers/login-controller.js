@@ -37,7 +37,7 @@ angular.module('bayer-web').controller('LoginController', function($scope, $http
                 }
                 else{                    
                     recrutador = data.data.usuario;
-                    $location.path("/cadatroDeVaga");
+                    $location.path("/dashboardRecrutador");
                 }
             }, function error(data){
                 if(data.status == 401)  

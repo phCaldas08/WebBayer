@@ -27,7 +27,7 @@ angular.module('bayer-web', ['ngRoute'])
         controller: 'DashboardCandidatoController'
     });
 
-    $routeProvider.when('/cadatroDeVaga',{
+    $routeProvider.when('/cadastroDeVaga',{
         templateUrl: 'partials/cadastro-vaga.html',
         controller: 'CadastroVagaController'
     });
@@ -48,6 +48,7 @@ let API = 'http://localhost:54297/api/bayer/';
 var usuario = null;
 var recrutador = null;
 var cssFiles = [];
+var id_processo_seletivo = null;
 
 
 function myFunction() {
