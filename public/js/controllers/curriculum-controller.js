@@ -1,11 +1,11 @@
-angular.module('bayer-web').controller('CurriculumController', function($scope, $http, $location){
+angular.module('bayer-web').controller('CurriculumController', function ($scope, $http, $location) {
 
-    $scope.iniciando = function(){       
-        if(usuario == null){            
+    $scope.iniciando = function () {
+        if (usuario == null) {
             $location.path("/login");
             return;
         }
-        
+
         cssFiles = [];
         cssFiles = [
             "responsive-forms.css",
@@ -66,8 +66,8 @@ angular.module('bayer-web').controller('CurriculumController', function($scope, 
 
     }
 
-    $scope.consultarCurriculo = function(){
-      
+    $scope.consultarCurriculo = function () {
+
 
         let data = {
             id_usuario: usuario.id_usuario,
@@ -79,34 +79,34 @@ angular.module('bayer-web').controller('CurriculumController', function($scope, 
             data: data,
             headers: {
                 'Content-Type': 'application/json'
-              }
-        }).then(function success(data){
+            }
+        }).then(function success(data) {
             $scope.usuario = data.data.usuario;
             $scope.curriculum = data.data.curriculo;
             //usuario = $scope.usuario;
             //$location.path("/dashboard");
-        }, function error(data){
+        }, function error(data) {
 
-            if(data.status == 400)
+            if (data.status == 400)
                 alert(data.message);
             else
                 alert("Não conseguimos consultar seu perfil, tente novamente! :)");
 
             console.log(data);
-        }); 
+        });
     }
-    
-    $scope.enviarCurriculo = function(){
-            
-        if($scope.usuario.CPF && $scope.usuario.sobrenome && $scope.usuario.genero != "" && $scope.usuario.cor != ""
-            && $scope.usuario.telefone && $scope.usuario.rg && $scope.usuario.estadoEmissor && $scope.usuario.dataNascimento ){
+
+    $scope.enviarCurriculo = function () {
+
+        if ($scope.usuario.CPF && $scope.usuario.sobrenome && $scope.usuario.genero != "" && $scope.usuario.cor != ""
+            && $scope.usuario.telefone && $scope.usuario.rg && $scope.usuario.estadoEmissor && $scope.usuario.dataNascimento) {
             var data = null;
 
             data = {
                 id_usuario: usuario.id_usuario,
                 usuario: $scope.usuario,
                 curriculum: $scope.curriculum
-            }              
+            }
 
             $http({
                 method: 'POST',
@@ -114,23 +114,23 @@ angular.module('bayer-web').controller('CurriculumController', function($scope, 
                 data: data,
                 headers: {
                     'Content-Type': 'application/json'
-                  }
-            }).then(function success(data){
+                }
+            }).then(function success(data) {
                 alert("Curriculo cadastrado com sucesso!");
                 //usuario = $scope.usuario;
                 $location.path("/dashboardCandidato");
-            }, function error(data){
+            }, function error(data) {
 
-                if(data.status == 400)
+                if (data.status == 400)
                     alert(data.message);
                 else
                     alert("Não foi possível cadastrar seu currículum, tente novamente!");
 
                 console.log(data);
-            }); 
+            });
         }
 
-         
+
     }
 
 });

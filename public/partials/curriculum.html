@@ -1,5 +1,6 @@
 <main ng-init="iniciando()">
-    <div ng-show="index == 0"> <!--Informações pessoais-->
+    <div ng-show="index == 0">
+        <!--Informações pessoais-->
         <div class="text">
             <div class="primary">
                 <h1>Hora de cadastrar seu currículo!</h1>
@@ -8,9 +9,11 @@
                 <h2>Conte um pouco mais sobre você, {{ usuarioLogado.nome }}.</h2>
             </div>
         </div>
-        <form id="personal-data" >
-            <input type="text" name="cpf" placeholder="CPF" ng-model="usuario.CPF" value="{{ usuario.CPF }}" required>
-            <input type="text" name="sobrenome" placeholder="Sobrenome" ng-model="usuario.sobrenome" value="{{ usuario.sobrenome }}" required>
+        <form id="personal-data">
+            <input type="text" name="cpf" placeholder="CPF" ng-model="usuario.CPF" value="{{ usuario.CPF }}" required
+                onkeydown="javascript: fMasc(this,mCPF);" maxlength="14">
+            <input type="text" name="sobrenome" placeholder="Sobrenome" ng-model="usuario.sobrenome"
+                value="{{ usuario.sobrenome }}" required>
             <select name="genero" required ng-model="usuario.genero">
                 <option value="" disabled selected>Gênero</option>
                 <option value="Masculino">Masculino</option>
@@ -24,20 +27,26 @@
                 <option value="Parda">Parda</option>
                 <option value="Amarela">Amarela</option>
             </select>
-            <input type="text" name="Celular" placeholder="Celular (XX)XXXXX-XXXX" required value="{{ usuario.telefone }}" ng-model="usuario.telefone">
+            <input type="text" name="Celular" placeholder="Celular (XX)XXXXX-XXXX" required
+                value="{{ usuario.telefone }}" ng-model="usuario.telefone" onkeydown="javascript: fMasc(this,mTel);"
+                maxlength="14">
             <input type="text" name="dt_nascimento" placeholder="Data de Nascimento DD/MM/AAAA" required
-                value="{{ usuario.dataNascimento }}" ng-model="usuario.dataNascimento">
+                value="{{ usuario.dataNascimento }}" ng-model="usuario.dataNascimento"
+                onkeydown="javascript: mData(this);" maxlength="10">
             <input type="text" name="rg" placeholder="RG" required value="{{ usuario.rg }}" ng-model="usuario.rg">
-            <input type="text" name="emissor" ng-model="usuario.estadoEmissor" placeholder="Estado Emissor" required maxlength="2" value="{{ usuario.estadoEmissor }} ">
+            <input type="text" name="emissor" ng-model="usuario.estadoEmissor" placeholder="Estado Emissor" required
+                maxlength="2" value="{{ usuario.estadoEmissor }} ">
             <div class="links">
                 <ul>
-                    <button type="button" name="submit" ng-click="index = 1" onclick="window.scrollTo(0, 0)" >Avançar</button>
+                    <button type="button" name="submit" ng-click="index = 1"
+                        onclick="window.scrollTo(0, 0)">Avançar</button>
                     <li>Etapa 1/5 - Dados Pessoais</li>
                 </ul>
             </div>
         </form>
     </div>
-    <div ng-show="index == 1"> <!--Endereço-->
+    <div ng-show="index == 1">
+        <!--Endereço-->
         <div class="text">
             <div class="primary">
                 <h1>Hora de cadastrar seu currículo!</h1>
@@ -47,23 +56,31 @@
             </div>
         </div>
         <form id="personal-data">
-            <input type="text" name="CEP" placeholder="CEP" value="{{ curriculum.endereco.cep }}" ng-model="curriculum.endereco.cep" required>
-            <input type="text" name="rua" placeholder="Rua" value="{{ curriculum.endereco.rua }}" ng-model="curriculum.endereco.rua" required>
-            <input type="text" name="numero" placeholder="Numero" required value="{{ curriculum.endereco.numero }}" ng-model="curriculum.endereco.numero">
-            <input type="text" name="complemento" placeholder="Complemento" required value="{{ curriculum.endereco.complemento }}" ng-model="curriculum.endereco.complemento">
-            <input type="text" name="cidade" placeholder="Cidade" required value="{{ curriculum.endereco.cidade }}" ng-model="curriculum.endereco.cidade">
-            <input type="text" name="estado" placeholder="Estado" required value="{{ curriculum.endereco.estado }}" ng-model="curriculum.endereco.estado" pattern="[A-Z]{2}">
+            <input type="text" name="CEP" placeholder="CEP" value="{{ curriculum.endereco.cep }}"
+                onkeydown="javascript: fMasc(this,mCEP);" ng-model="curriculum.endereco.cep" required maxlength="10">
+            <input type="text" name="rua" placeholder="Rua" value="{{ curriculum.endereco.rua }}"
+                ng-model="curriculum.endereco.rua" required>
+            <input type="text" name="numero" placeholder="Numero" required value="{{ curriculum.endereco.numero }}"
+                ng-model="curriculum.endereco.numero">
+            <input type="text" name="complemento" placeholder="Complemento" required
+                value="{{ curriculum.endereco.complemento }}" ng-model="curriculum.endereco.complemento">
+            <input type="text" name="cidade" placeholder="Cidade" required value="{{ curriculum.endereco.cidade }}"
+                ng-model="curriculum.endereco.cidade">
+            <input type="text" name="estado" placeholder="Estado" required value="{{ curriculum.endereco.estado }}"
+                ng-model="curriculum.endereco.estado" pattern="[A-Z]{2}">
             <div class="links">
                 <ul>
                     <button type="button" ng-click="index = 0" onclick="window.scrollTo(0, 0)">Voltar</button>
-                    <button type="button" name="submit" id="enviar" ng-click="index = 2" onclick="window.scrollTo(0, 0)">Avançar</button>
+                    <button type="button" name="submit" id="enviar" ng-click="index = 2"
+                        onclick="window.scrollTo(0, 0)">Avançar</button>
                     <li>Etapa 2/5 - Endereço</li>
                 </ul>
             </div>
         </form>
     </div>
 
-    <div ng-show="index == 2"> <!--Ensino-->
+    <div ng-show="index == 2">
+        <!--Ensino-->
         <div class="text">
             <div class="primary">
                 <h1>Hora de cadastrar seu currículo!</h1>
@@ -86,17 +103,23 @@
                 <option value="Completo">Completo</option>
                 <option value="Trancado">Trancado</option>
             </select>
-            <input type="text" name="nome-instituicao" placeholder="Nome da Instituição" value="{{ curriculum.ensino.instituicao }}" ng-model="curriculum.ensino.instituicao" required>
-            <input type="text" name="nome-curso" placeholder="Nome do Curso" value="{{ curriculum.ensino.curso }}" ng-model="curriculum.ensino.curso" required>
-            <input type="text" name="ano-conclusão" placeholder="Ano de Conclusão (AAAA)" required value="{{ curriculum.ensino.anoConclusao }}" ng-model="curriculum.ensino.anoConclusao"
+            <input type="text" name="nome-instituicao" placeholder="Nome da Instituição"
+                value="{{ curriculum.ensino.instituicao }}" ng-model="curriculum.ensino.instituicao" required>
+            <input type="text" name="nome-curso" placeholder="Nome do Curso" value="{{ curriculum.ensino.curso }}"
+                ng-model="curriculum.ensino.curso" required>
+            <input type="text" name="ano-conclusão" placeholder="Ano de Conclusão (AAAA)" required
+                value="{{ curriculum.ensino.anoConclusao }}" ng-model="curriculum.ensino.anoConclusao"
                 pattern="[0-9]{4}">
-            <input type="text" name="periodo" placeholder="Período" required value="{{ curriculum.ensino.periodo }}" ng-model="curriculum.ensino.periodo">
-           
-            <textarea name="observações" ng-model="curriculum.ensino.observacao" placeholder="Observações Adicionais">{{ curriculum.ensino.observacao }}</textarea>
+            <input type="text" name="periodo" placeholder="Período" required value="{{ curriculum.ensino.periodo }}"
+                ng-model="curriculum.ensino.periodo">
+
+            <textarea name="observações" ng-model="curriculum.ensino.observacao"
+                placeholder="Observações Adicionais">{{ curriculum.ensino.observacao }}</textarea>
             <div class="links">
                 <ul>
                     <button type="button" ng-click="index = 1" onclick="window.scrollTo(0, 0)">Voltar</button>
-                    <button type="button" name="submit" id="voltar" ng-click="index = 3" onclick="window.scrollTo(0, 0)">Avançar</button>
+                    <button type="button" name="submit" id="voltar" ng-click="index = 3"
+                        onclick="window.scrollTo(0, 0)">Avançar</button>
                     <li>Etapa 3/5 - Educação</li>
                 </ul>
             </div>
@@ -116,7 +139,8 @@
             </div>
         </div>
         <form id="personal-data" action="" method="post">
-            <input type="text" name="nome-empresa" placeholder="Nome da Empresa" value="{{ curriculum.experiencia.nomeEmpresa }}" ng-model="curriculum.experiencia.nomeEmpresa" required>
+            <input type="text" name="nome-empresa" placeholder="Nome da Empresa"
+                value="{{ curriculum.experiencia.nomeEmpresa }}" ng-model="curriculum.experiencia.nomeEmpresa" required>
             <select name="nivel" required ng-model="curriculum.experiencia.nivel">
                 <option value="" disabled selected>Nivel</option>
                 <option value="socio">Sócio</option>
@@ -126,25 +150,33 @@
                 <option value="estagio">Estágio</option>
                 <option value="efetivo">Efetivo</option>
             </select>
-            <input type="text" name="ultimo-cargo" placeholder="Ultimo Cargo" value="{{ curriculum.experiencia.cargo }}" ng-model="curriculum.experiencia.cargo"
+            <input type="text" name="ultimo-cargo" placeholder="Ultimo Cargo" value="{{ curriculum.experiencia.cargo }}"
+                ng-model="curriculum.experiencia.cargo" required>
+            <input type="text" name="ano-inicio" placeholder="Ano de Início (AAAA)" required
+                value="{{ curriculum.experiencia.anoInicio }}" ng-model="curriculum.experiencia.anoInicio"
+                pattern="[0-9]{4}">
+            <input type="text" name="ano-término" placeholder="Ano de Término (AAAA)"
+                uib-tootip="Deixe em branco se for seu trabalho atual." required
+                value="{{ curriculum.experiencia.anoTermino }}" ng-model="curriculum.experiencia.anoTermino"
+                pattern="[0-9]{4}">
+            <input type="text" name="cidade-estado" placeholder="Cidade/Estado (Ex: São Paulo/SP)"
+                value="{{ curriculum.experiencia.cidadeEstado }}" ng-model="curriculum.experiencia.cidadeEstado"
                 required>
-            <input type="text" name="ano-inicio" placeholder="Ano de Início (AAAA)" required value="{{ curriculum.experiencia.anoInicio }}" ng-model="curriculum.experiencia.anoInicio" 
-                pattern="[0-9]{4}">
-            <input type="text" name="ano-término" placeholder="Ano de Término (AAAA)" uib-tootip="Deixe em branco se for seu trabalho atual." required value="{{ curriculum.experiencia.anoTermino }}"  ng-model="curriculum.experiencia.anoTermino"
-                pattern="[0-9]{4}">
-            <input type="text" name="cidade-estado" placeholder="Cidade/Estado (Ex: São Paulo/SP)" value="{{ curriculum.experiencia.cidadeEstado }}" ng-model="curriculum.experiencia.cidadeEstado" required>
-            <textarea name="observações" ng-model="curriculum.experiencia.observacao" placeholder="Observações Adicionais">{{ curriculum.experiencia.observacao }}</textarea>
+            <textarea name="observações" ng-model="curriculum.experiencia.observacao"
+                placeholder="Observações Adicionais">{{ curriculum.experiencia.observacao }}</textarea>
             <div class="links">
                 <ul>
                     <li><a href=#>Adicionar Outra Formação</a></li>
                     <button type="button" ng-click="index = 2" onclick="window.scrollTo(0, 0)">Voltar</button>
-                    <button type="button" name="button" ng-click="index = 4" id="enviar" onclick="window.scrollTo(0, 0)">Avançar</button>
+                    <button type="button" name="button" ng-click="index = 4" id="enviar"
+                        onclick="window.scrollTo(0, 0)">Avançar</button>
                     <li>Etapa 4/5 - Experiência</li>
                 </ul>
             </div>
         </form>
     </div>
-    <div ng-show="index == 4"> <!--Skills-->
+    <div ng-show="index == 4">
+        <!--Skills-->
         <div class="text">
             <div class="primary">
                 <h1>Hora de cadastrar seu currículo!</h1>
@@ -161,8 +193,9 @@
             <div class="idioma container">
                 <label>Idioma</label>
                 <div class="input">
-                    <input type="text" name="idioma1" placeholder="Idioma" ng-model="curriculum.skill.primeiroIdioma" value="{{ curriculum.skill.primeiroIdioma }}" required>
-                    <select name="idioma-nivel" ng-model="curriculum.skill.nivelPrimeiroIdioma"  required>
+                    <input type="text" name="idioma1" placeholder="Idioma" ng-model="curriculum.skill.primeiroIdioma"
+                        value="{{ curriculum.skill.primeiroIdioma }}" required>
+                    <select name="idioma-nivel" ng-model="curriculum.skill.nivelPrimeiroIdioma" required>
                         <option value="0" disabled selected>Nivel</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -172,7 +205,8 @@
                     </select>
                 </div>
                 <div class="input">
-                    <input type="text" name="idioma2" ng-model="curriculum.skill.segundoIdioma" placeholder="Idioma" value="{{curriculum.skill.segundoIdioma}}">
+                    <input type="text" name="idioma2" ng-model="curriculum.skill.segundoIdioma" placeholder="Idioma"
+                        value="{{curriculum.skill.segundoIdioma}}">
                     <select name="idioma-nivel" ng-model="curriculum.skill.nivelSegundoIdioma">
                         <option value="0" disabled selected>Nivel</option>
                         <option value="1">1</option>
@@ -183,7 +217,8 @@
                     </select>
                 </div>
                 <div class="input">
-                    <input type="text" name="idioma3" ng-model="curriculum.skill.terceiroIdioma" placeholder="Idioma" value="{{curriculum.skill.terceiroIdioma}}">
+                    <input type="text" name="idioma3" ng-model="curriculum.skill.terceiroIdioma" placeholder="Idioma"
+                        value="{{curriculum.skill.terceiroIdioma}}">
                     <select name="idioma-nivel" ng-model="curriculum.skill.nivelTerceiroIdioma">
                         <option value="0" disabled selected>Nivel</option>
                         <option value="1">1</option>
@@ -201,7 +236,9 @@
                         target="_blank">Oque
                         é isso?</a></span>
                 <div class="input">
-                    <input type="text" name="skill1" placeholder="Habilidade" ng-model="curriculum.skill.primeiraHabilidade" value="{{curriculum.skill.primeiraHabilidade}}" required>
+                    <input type="text" name="skill1" placeholder="Habilidade"
+                        ng-model="curriculum.skill.primeiraHabilidade" value="{{curriculum.skill.primeiraHabilidade}}"
+                        required>
                     <select name="skill-nivel" ng-model="curriculum.skill.nivelPrimeiraHabilidade" required>
                         <option value="0" disabled selected>Nivel</option>
                         <option value="1">1</option>
@@ -212,8 +249,9 @@
                     </select>
                 </div>
                 <div class="input">
-                    <input type="text" name="skill2" ng-model="curriculum.skill.segundaHabilidade" placeholder="Habilidade" value="{{curriculum.skill.primeiraHabilidade}}">
-                    <select name="idioma-nivel"  ng-model="curriculum.skill.nivelSegundaHabilidade">
+                    <input type="text" name="skill2" ng-model="curriculum.skill.segundaHabilidade"
+                        placeholder="Habilidade" value="{{curriculum.skill.primeiraHabilidade}}">
+                    <select name="idioma-nivel" ng-model="curriculum.skill.nivelSegundaHabilidade">
                         <option value="0" disabled selected>Nivel</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -223,7 +261,8 @@
                     </select>
                 </div>
                 <div class="input">
-                    <input type="text" name="skill3" ng-model="curriculum.skill.terceiraHabilidade" placeholder="Habilidade" value="{{curriculum.skill.terceiraHabilidade}}">
+                    <input type="text" name="skill3" ng-model="curriculum.skill.terceiraHabilidade"
+                        placeholder="Habilidade" value="{{curriculum.skill.terceiraHabilidade}}">
                     <select name="idioma-nivel" ng-model="curriculum.skill.nivelTerceiraHabilidade">
                         <option value="0" disabled selected>Nivel</option>
                         <option value="1">1</option>
@@ -235,7 +274,8 @@
             </div>
             <div class="links">
                 <ul>
-                    <button type="button" name="voltar" ng-click="index = 3" onclick="window.scrollTo(0, 0)">Voltar</button>
+                    <button type="button" name="voltar" ng-click="index = 3"
+                        onclick="window.scrollTo(0, 0)">Voltar</button>
                     <button type="button" name="submit" ng-click="enviarCurriculo()" id="enviar">Enviar</button>
                     <li>Etapa 5/5 - Habilidades</li>
                 </ul>

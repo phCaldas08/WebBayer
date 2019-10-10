@@ -19,7 +19,7 @@
                 <option value="Trainee">Trainee</option>
             </select>
             <input type="text" name="dt_termino" placeholder="Data de Término DD/MM/AAAA" required value="{{ vaga.dataTermino }}" ng-model="vaga.dataTermino">
-            <input type="text" name="max-participantes" placeholder="Maximo de Participantes" value="{{ vaga.limiteCandidatos }}" ng-model="vaga.limiteCandidatos">
+            <input type="text" name="max-participantes" placeholder="Maximo de Participantes" value="{{ vaga.limiteCandidatos }}" ng-model="vaga.limiteCandidatos"  onkeydown="javascript: mData(this);" maxlenght="10"  >
             <div class="links">
                 <ul>
                     <button type="button" name="submit" form="personal-data" ng-click="index = 1">Avançar</button>
